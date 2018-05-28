@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Sketch Pad</title>
+
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		body {
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+		#sketch-canvas {
+			border: 2px dotted #CCCCCC;
+			border-radius: 5px;
+			cursor: crosshair;
+		}
+		.controls {
+			min-height: 60px;
+			width: 100%;
+			border-radius: 5px;
+			overflow: hidden;
+		}
+		.controls ul {
+			list-style:none;
+			margin: 0;
+			float: 	left;
+			padding: 10px 0 20px;
+			width: 100%;
+			text-align: center;
+		}
+		.controls ul li{
+			display:inline-block;
+			height: 54px;
+			width: 54px;
+			border: 1px solid black;
+			border-radius: 60px;
+			cursor: pointer;
+			box-shadow: 0 3px 0 0 #222;
+			margin: 0 5px 10px;
+		}
+		.sizecontrols ul li{
+			margin: 0 auto 0 auto;
+		}
+				/* Colour Selections */
+		.black {background-color: #000000; } 
+		.brown {background-color: #663300; }  
+		.white {background-color: #ffffff;  }
+		.dblue { background-color: #000099; }
+		.lblue { background-color: #4fa3fc; }
+		.purple{ background-color: #6600ff; }
+		.pink{ background-color: #ff66ff; }   
+		.red { background-color: #ff0000; }
+		.orange{ background-color: #ff6600; } 
+		.yellow { background-color: #ffff00; } 
+		.dgreen{ background-color:#006600; }
+		.lgreen{ background-color:#00ff00; }
+
+		.controls .selected{
+			border: 7px solid #cccccc;
+		}
+		.sizecontrols .selected{
+			border: 4px solid #000066;
+		}
+		#sketch-Holder img{
+			width: 50%;
+			height:auto;
+			margin-top: 5px;
+		}
+	</style>
+
+</head>
+<body>
+	<!-- Content -->
+	<div class="container">
+		<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sketchModal">
+  Launch Sketch Pad
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="sketchModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+        		<h1 class="modal-title" id="exampleModalLabel">Sketch Pad</h1>
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      		</div>
+      		<div class="modal-body">
+      			<canvas id="sketch-canvas" width="470" height="500">Sorry your browser does not allow the sketch pad, please use an alternative.</canvas>
+       			<div class="controls">
+		          <ul>
+		            <li class="black selected"></li>
+		            <li class="brown"></li>
+		            <li class="white"></li>
+		            <li class="dblue"></li>
+		            <li class="lblue"></li>
+		            <li class="purple"></li>
+		            <li class="pink"></li>
+		            <li class="red"></li>
+		            <li class="orange"></li>
+		            <li class="yellow"></li>
+		            <li class="dgreen"></li>
+		            <li class="lgreen"></li>
+		          </ul>
+        		</div>
+        		<div class="col-md-12">
+	        		<div class="sizecontrols controls" id="markerSize">
+	      				<button id="smallBtn" class=" btn-sm btn-default selected">Small</button>
+				        <button id="mediumBtn" class=" btn-sm btn-default">Medium</button>
+				        <button id="largeBtn" class=" btn-sm btn-defaultdefaultdefault">Large</button>
+				        <button id="xlargeBtn" class=" btn-sm btn-default">X Large</button>
+				        <button id="fillBtn" class=" btn-sm btn-default">Fill</button>
+				        <button id="clearBtn" class="btn-sm btn-default" >Clear</button>
+	       			</div>
+       			</div>
+       		</div>
+		
+      	<div class="modal-footer">
+        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        	<button type="button" id="saveBtn" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+      	</div>
+	</div>
+  </div>
+</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div id="sketch-Holder">
+					<img id="sketch-image" src="" alt=""/>
+				</div>
+			</div>
+		</div>
+	</div>
+		<!-- Scripts -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
+	<!-- <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script> -->
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<!--Sketch Pad Javascript-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+	<!--<script src="https://code.angularjs.org/snapshot/angular.min.js"></script>-->
+	<script src="sketch.js"></script>
+</body>
+</html>
